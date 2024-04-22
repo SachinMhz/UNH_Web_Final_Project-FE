@@ -1,31 +1,36 @@
 <template>
   <div>
-    <!--Step 3 use the component-->
-    <MyHeader
+    <Header
       bookName="Game of Thrones"
       authorName="George RR Martins"
       yourName="Write your Name"
     />
-    <BookBox :books="books" />
+    <div class="product-grid">
+      <div
+        class="product-wrapper"
+        v-for="(product, index) in products"
+        :key="index"
+      >
+        <ProductCard :product="product" />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-// Step: 1 Import the components
-import MyHeader from "./components/MyHeader.vue";
-import BookBox from "./components/BookBox.vue";
+import Header from "./components/Header.vue";
+import ProductCard from "./components/ProductCard.vue";
 
 export default {
   name: "App",
-
-  // Step 2: Register the components
   components: {
-    MyHeader,
-    BookBox,
+    Header,
+    ProductCard,
   },
   data() {
     return {
       books: [],
+      products: [],
     };
   },
   methods: {
@@ -36,10 +41,39 @@ export default {
       console.log(data);
       return data;
     },
+
+    generateProducts() {
+      const productTemplate = {
+        id: 1,
+        name: "Smartphone X",
+        price: 699.99,
+        ratings: 4,
+        oldPrice: 799.99,
+        numberOfReviews: 500,
+        shippingDate: "2024-04-21",
+        tags: ["Electronics", "Mobile Phones", "Gadgets"],
+      };
+
+      const numberOfProducts = 20; // Change this to generate more products
+
+      for (let i = 0; i < numberOfProducts; i++) {
+        // Deep copy the product template to avoid reference issues
+        const newProduct = JSON.parse(JSON.stringify(productTemplate));
+        // You can modify each product here if needed
+        // For example, you can change the name or price dynamically
+        newProduct.name = `${productTemplate.name} ${i + 1}`;
+        newProduct.id = productTemplate.id + i;
+        newProduct.price += i * 10; // Example: Increment price for each product
+
+        // Push the new product to the products array
+        this.products.push(newProduct);
+      }
+    },
   },
   async created() {
     // this.books = await this.fetchbooks();
     this.books = [];
+    this.generateProducts();
   },
 
   // data() => this.data books
@@ -49,8 +83,9 @@ export default {
 </script>
 
 
-<style>
+<style >
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 * {
   box-sizing: border-box;
   margin: 0;
@@ -60,17 +95,10 @@ export default {
 body {
   font-family: "Montserrat", sans-serif;
 }
-.container {
-  max-width: 400px;
-  margin: 30px auto;
-  overflow: auto;
-  min-height: 300px;
-  border: 0.3em solid black;
-  padding: 30px;
-  border-radius: 5px;
-}
 
-div {
-  margin-bottom: 0.5em;
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
 }
 </style>
