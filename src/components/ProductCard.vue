@@ -1,14 +1,15 @@
 <template>
   <div class="card-wrapper">
     <div class="img-wrapper">
-      <button class="favorite" title="Add to Cart">
+      <button class="favorite btn" title="Favorite Item">
         <span class="material-icons"> favorite_border </span>
       </button>
       <img
-        src="https://www.cnet.com/a/img/resize/9624241ec6785ab68e2092e9656bc16c73d75cb1/hub/2023/01/21/ec79d7fc-9235-4830-8fc1-77db12800b97/apple-macbook-pro-16-2023-3214.jpg?auto=webp&fit=crop&height=1200&width=1200"
-        alt="Image from Google"
+        class="product-img"
+        :src="product.image"
+        :alt="product.imageText"
       />
-      <button class="cart" title="Add to Cart">
+      <button class="cart btn" title="Add to Cart">
         <span class="material-icons"> add_shopping_cart </span>
       </button>
     </div>
@@ -17,7 +18,7 @@
         <p class="current-price price">$ {{ product.price }}</p>
         <p class="old-price price">$ {{ product.oldPrice }}</p>
       </div>
-      <h3>
+      <h3 class="title">
         {{ product.name }}
       </h3>
 
@@ -64,7 +65,8 @@ export default {
 .img-wrapper {
   position: relative;
 }
-img {
+
+.product-img {
   width: 100%;
   height: 100%;
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
@@ -84,9 +86,10 @@ img {
   align-items: center;
 }
 
-h3 {
+.title {
   font-size: 18px;
   margin: 4px 0px;
+  font-weight: bold;
 }
 
 .cart {
@@ -98,11 +101,11 @@ h3 {
 .favorite {
   top: 12px;
   border-radius: 40px;
-  padding:8px;
+  padding: 8px;
   background-color: rgba(255, 255, 255, 0.74);
 }
 
-button {
+.btn {
   position: absolute;
   right: 12px;
   background-color: white;
@@ -113,7 +116,7 @@ button {
   align-items: center;
 }
 
-button:hover {
+.btn:hover {
   cursor: pointer;
   background-color: white;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
@@ -133,6 +136,6 @@ button:hover {
 }
 
 .description {
-  font-size: 13px;
+  font-size: 14px;
 }
 </style>

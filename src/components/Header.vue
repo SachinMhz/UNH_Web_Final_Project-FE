@@ -1,6 +1,6 @@
 <template>
-  <nav>
-    <img src="../assets/logo.png" alt="Online Shopping Site Logo" />
+  <nav class="nav-menu">
+    <img class="logo" src="../assets/logo.png" alt="Online Shopping Site Logo" />
 
     <div class="nav-item">
       <span class="material-icons"> location_on </span>
@@ -39,7 +39,7 @@ export default {
 </script>
 
 <style scoped>
-nav {
+.nav-menu {
   position: fixed;
   width: 100%;
   padding: 12px;
@@ -51,7 +51,7 @@ nav {
   z-index: 1;
 }
 
-img {
+.logo {
   width: 140px;
   height: 40px;
   object-fit: contain;

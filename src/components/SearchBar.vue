@@ -1,6 +1,7 @@
 <template>
   <div class="search-bar">
     <input
+      class="search-input"
       type="text"
       v-model="serachText"
       placeholder="Search..."
@@ -31,11 +32,11 @@ export default {
 <style scoped>
 .search-bar {
   display: flex;
-  width:100%;
+  width: 100%;
   border-radius: 24px;
   overflow: hidden;
 }
-input {
+.search-input {
   flex: 1;
   padding-left: 12px;
 }

@@ -1,16 +1,12 @@
 <template>
   <div class="card-wrapper">
     <div class="details">
-      <h3>
+      <h3 class="offer-title">
         {{ offer.title }}
       </h3>
-
-      <button>Shop now</button>
+      <button class="btn">Shop now</button>
     </div>
-    <img
-      :src="offer.image"
-      :alt="offer.imageText"
-    />
+    <img class="offer-image" :src="offer.image" :alt="offer.imageText" />
   </div>
 </template>
   
@@ -41,7 +37,7 @@ export default {
   color: black;
 }
 
-img {
+.offer-image {
   width: 100%;
   height: 100%;
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
@@ -55,16 +51,15 @@ img {
   top: 0px;
   left: 0px;
   padding: 40px;
-  
 }
 
-h3 {
+.offer-title {
   font-size: 1.5em;
   color: white;
   margin-bottom: 20px;
 }
 
-button {
+.btn {
   display: block;
   font-size: 16px;
   font-weight: bold;
@@ -77,7 +72,7 @@ button {
   overflow: hidden;
 }
 
-button:hover {
+.btn:hover {
   cursor: pointer;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
   background-color: white;

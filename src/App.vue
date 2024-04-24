@@ -53,6 +53,9 @@ export default {
       const productTemplate = {
         id: 1,
         name: "Smartphone X",
+        image:
+          "https://www.cnet.com/a/img/resize/9624241ec6785ab68e2092e9656bc16c73d75cb1/hub/2023/01/21/ec79d7fc-9235-4830-8fc1-77db12800b97/apple-macbook-pro-16-2023-3214.jpg?auto=webp&fit=crop&height=1200&width=1200",
+        imageText: "Text from google",
         price: 699.99,
         ratings: 4,
         oldPrice: 799.99,

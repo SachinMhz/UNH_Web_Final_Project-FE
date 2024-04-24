@@ -1,6 +1,6 @@
 <template>
   <div class="review-row">
-    <span v-for="(star, index) in maxStars" :key="index">
+    <span v-for="(_, index) in maxStars" :key="index">
       <span v-if="index < ratings" class="material-icons"> star </span>
       <span v-else class="material-icons"> star_border </span>
     </span>

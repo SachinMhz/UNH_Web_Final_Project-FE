@@ -1,32 +1,32 @@
 <template>
-  <footer>
+  <footer class="footer">
     <div>
       <div class="footer-title">Get to know Us</div>
-      <ul>
-        <li>Careers</li>
-        <li>News Letter</li>
-        <li>Sustainability</li>
-        <li>Press Center</li>
+      <ul class="footer-list">
+        <li class="footer-list-item">Careers</li>
+        <li class="footer-list-item">News Letter</li>
+        <li class="footer-list-item">Sustainability</li>
+        <li class="footer-list-item">Press Center</li>
       </ul>
     </div>
     <div>
       <div class="footer-title">Payment Products</div>
-      <ul>
-        <li>OSS Visa</li>
-        <li>OSS Store Credit</li>
-        <li>OSS Secured Card</li>
-        <li>OSS Business Card</li>
-        <li>Gifts Card</li>
+      <ul class="footer-list">
+        <li class="footer-list-item">OSS Visa</li>
+        <li class="footer-list-item">OSS Store Credit</li>
+        <li class="footer-list-item">OSS Secured Card</li>
+        <li class="footer-list-item">OSS Business Card</li>
+        <li class="footer-list-item">Gifts Card</li>
       </ul>
     </div>
     <div>
       <div class="footer-title">Let Us Help You</div>
-      <ul>
-        <li>Your Account</li>
-        <li>Your Orders</li>
-        <li>Your Returns</li>
-        <li>Shipping Rates</li>
-        <li>Help</li>
+      <ul class="footer-list">
+        <li class="footer-list-item">Your Account</li>
+        <li class="footer-list-item">Your Orders</li>
+        <li class="footer-list-item">Your Returns</li>
+        <li class="footer-list-item">Shipping Rates</li>
+        <li class="footer-list-item">Help</li>
       </ul>
     </div>
   </footer>
@@ -40,21 +40,21 @@ export default {
 </script>
   
 <style scoped>
-ul {
+.footer-list {
   list-style-type: none;
 }
 
-li {
+.footer-list-item {
   margin-bottom: 6px;
 }
 
-li:hover{
+.footer-list-item:hover{
     cursor: pointer;
     text-decoration: underline;
     font-weight: bold;
 }
 
-footer {
+.footer {
   padding: 24px 0px;
   background-color: black;
   display: flex;
