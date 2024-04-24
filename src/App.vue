@@ -153,8 +153,8 @@ main {
 .offer:nth-child(4) {
   grid-row: span 2;
 }
-.offer:nth-child(7) {
-  grid-column: span 2;
+.offer:nth-child(5) {
+  grid-row: span 2;
 }
 
 .product-title {
