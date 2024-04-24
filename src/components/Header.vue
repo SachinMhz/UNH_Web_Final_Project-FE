@@ -6,7 +6,7 @@
       <span class="material-icons"> location_on </span>
       <span class="nav-label"> Deliver to John </span>
     </div>
-    <div class="nav-item">Search Bar and Icon</div>
+    <div class="nav-item search-bar"><SearchBar /></div>
     <div class="nav-item">
       <span class="material-icons"> account_circle </span>
       <span class="nav-label"> Accounts </span>
@@ -23,9 +23,13 @@
 </template>
 
 <script>
+import SearchBar from "./SearchBar.vue";
 export default {
   // Exporting Default Object
-  name: "MyHeader",
+  name: "Header",
+  components: {
+    SearchBar,
+  },
   props: {
     authorName: String,
     bookName: String,
@@ -68,5 +72,9 @@ img {
 .nav-label:hover {
   cursor: pointer;
   text-decoration: underline;
+}
+
+.search-bar{
+  flex-grow: 0.4;
 }
 </style>

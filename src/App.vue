@@ -17,12 +17,14 @@
       </div>
     </div>
   </main>
+  <Footer />
 </template>
 
 <script>
 import Header from "./components/Header.vue";
 import ProductCard from "./components/ProductCard.vue";
 import OfferCard from "./components/OfferCard.vue";
+import Footer from "./components/Footer.vue";
 
 export default {
   name: "App",
@@ -30,10 +32,10 @@ export default {
     Header,
     ProductCard,
     OfferCard,
+    Footer,
   },
   data() {
     return {
-      books: [],
       products: [],
       offers: [],
     };
@@ -55,6 +57,8 @@ export default {
         ratings: 4,
         oldPrice: 799.99,
         numberOfReviews: 500,
+        description:
+          "This is a small description about the produt. loresm ipsum, yo tyo . Yesto usto huncha product.",
         shippingDate: "2024-04-21",
         tags: ["Electronics", "Mobile Phones", "Gadgets"],
       };
@@ -127,7 +131,7 @@ body {
 }
 
 main {
-  padding: 80px 140px;
+  padding: 90px 140px;
 }
 
 .product-grid {
