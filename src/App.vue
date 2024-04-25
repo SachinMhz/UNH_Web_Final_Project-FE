@@ -43,18 +43,18 @@ export default {
   methods: {
     // Method to fetch products from the database.
     async fetchProducts() {
-      const res = await fetch("http://localhost:9523/api/products");
+      const res = await fetch("https://sachin-unh-web-be.onrender.com/api/products");
       return await res.json();
     },
     // Method to fetch Offers from the database.
-    async fetchOfferss() {
-      const res = await fetch("http://localhost:9523/api/offers");
+    async fetchOffers() {
+      const res = await fetch("https://sachin-unh-web-be.onrender.com/api/offers");
       return await res.json();
     },
   },
   async created() {
     this.products = await this.fetchProducts();
-    this.offers = await this.fetchOfferss();
+    this.offers = await this.fetchOffers();
   },
 };
 </script>
