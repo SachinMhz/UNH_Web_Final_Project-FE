@@ -78,4 +78,14 @@ export default {
   background-color: white;
   color: black;
 }
+
+@media only screen and (max-width: 1480px) {
+  .btn {
+    padding: 12px;
+  }
+
+  .offer-title{
+    font-size:  1.2em;
+  }
+}
 </style>

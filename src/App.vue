@@ -42,8 +42,8 @@ export default {
   },
   methods: {
     //promoises
-    async fetchbooks() {
-      const res = await fetch("http://localhost:9523/books ");
+    async fetchProducts() {
+      const res = await fetch("http://localhost:9523/api/test");
       const data = await res.json();
       console.log(data);
       return data;
@@ -109,7 +109,7 @@ export default {
   async created() {
     // this.books = await this.fetchbooks();
     this.books = [];
-    this.generateProducts();
+    this.products = await this.fetchProducts();
     this.generateOffers();
   },
 
@@ -164,5 +164,79 @@ main {
   font-size: 28px;
   font-weight: bolder;
   margin: 16px 0px 8px 0px;
+}
+
+@media only screen and (max-width: 1600px) {
+  main {
+    padding: 90px 100px;
+  }
+}
+
+@media only screen and (max-width: 1400px) {
+  main {
+    padding: 90px 80px;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+}
+
+@media only screen and (max-width: 1300px) {
+  mains {
+    padding: 90px 60px;
+  }
+
+  .offer-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media only screen and (max-width: 1150px) {
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media only screen and (max-width: 1020px) {
+  .offer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .offer:nth-child(2) {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+  .offer:nth-child(3) {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+  .offer:nth-child(4) {
+    grid-row: span 1;
+  }
+  .offer:nth-child(5) {
+    grid-row: span 1;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (max-width: 720px) {
+  .offer-grid {
+    display: none;
+  }
+
+  .product-title {
+    margin-top: 0px;
+  }
+}
+@media only screen and (max-width: 640px) {
+  .product-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 </style>

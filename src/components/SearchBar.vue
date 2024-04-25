@@ -3,7 +3,7 @@
     <input
       class="search-input"
       type="text"
-      v-model="serachText"
+      v-model="searchText"
       placeholder="Search..."
       @keyup.enter="search"
     />
@@ -42,6 +42,15 @@ export default {
 }
 .search-icon {
   padding: 12px 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #9fa8ed;
+}
+
+@media only screen and (max-width: 700px) {
+  .search-icon {
+    padding: 6px 8px;
+  }
 }
 </style>

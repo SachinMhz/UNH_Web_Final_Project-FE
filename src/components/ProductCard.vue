@@ -54,6 +54,7 @@ export default {
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
   border-radius: 12px;
   overflow: hidden;
+  height: 100%;
 }
 
 .card-wrapper:hover {
@@ -72,6 +73,7 @@ export default {
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
   object-fit: cover;
   border-radius: 12px;
+  aspect-ratio: 1;
   overflow: hidden;
 }
 
@@ -96,6 +98,7 @@ export default {
   bottom: -20px;
   padding: 12px;
   border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.86);
 }
 
 .favorite {
@@ -108,7 +111,6 @@ export default {
 .btn {
   position: absolute;
   right: 12px;
-  background-color: white;
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
   border: none;
   display: flex;

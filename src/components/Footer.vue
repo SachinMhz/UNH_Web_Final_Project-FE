@@ -61,12 +61,22 @@ export default {
   width: 100%;
   color: white;
   justify-content: space-evenly;
-  align-items: center;
 }
 
 .footer-title {
   font-weight: bold;
   font-size: larger;
   margin-bottom: 8px;
+}
+
+@media only screen and (max-width: 700px) {
+  .footer {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-title{
+    margin-top: 24px;
+  }
 }
 </style>
