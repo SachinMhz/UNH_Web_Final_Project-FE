@@ -41,81 +41,21 @@ export default {
     };
   },
   methods: {
-    //promoises
+    // Method to fetch products from the database.
     async fetchProducts() {
-      const res = await fetch("http://localhost:9523/api/test");
-      const data = await res.json();
-      console.log(data);
-      return data;
+      const res = await fetch("http://localhost:9523/api/products");
+      return await res.json();
     },
-
-    generateProducts() {
-      const productTemplate = {
-        id: 1,
-        name: "Smartphone X",
-        image:
-          "https://www.cnet.com/a/img/resize/9624241ec6785ab68e2092e9656bc16c73d75cb1/hub/2023/01/21/ec79d7fc-9235-4830-8fc1-77db12800b97/apple-macbook-pro-16-2023-3214.jpg?auto=webp&fit=crop&height=1200&width=1200",
-        imageText: "Text from google",
-        price: 699.99,
-        ratings: 4,
-        oldPrice: 799.99,
-        numberOfReviews: 500,
-        description:
-          "This is a small description about the produt. loresm ipsum, yo tyo . Yesto usto huncha product.",
-        shippingDate: "2024-04-21",
-        tags: ["Electronics", "Mobile Phones", "Gadgets"],
-      };
-
-      const numberOfProducts = 10; // Change this to generate more products
-
-      for (let i = 0; i < numberOfProducts; i++) {
-        // Deep copy the product template to avoid reference issues
-        const newProduct = JSON.parse(JSON.stringify(productTemplate));
-        // You can modify each product here if needed
-        // For example, you can change the name or price dynamically
-        newProduct.name = `${productTemplate.name} ${i + 1}`;
-        newProduct.id = productTemplate.id + i;
-        newProduct.price += i * 10; // Example: Increment price for each product
-
-        // Push the new product to the products array
-        this.products.push(newProduct);
-      }
-    },
-
-    generateOffers() {
-      const productTemplate = {
-        id: 1,
-        title: "Find the perfect gifts for Mom",
-        image: "https://calbizjournal.com/wp-content/uploads/2021/01/gift.jpg",
-        imageText: "Gift for Mom",
-        tags: ["Electronics", "Mobile Phones", "Gadgets"],
-      };
-
-      const numberOfProducts = 7; // Change this to generate more products
-
-      for (let i = 0; i < numberOfProducts; i++) {
-        // Deep copy the product template to avoid reference issues
-        const newProduct = JSON.parse(JSON.stringify(productTemplate));
-        // You can modify each product here if needed
-        // For example, you can change the name or price dynamically
-        newProduct.title = `${productTemplate.title} ${i + 1}`;
-        newProduct.id = productTemplate.id + i;
-
-        // Push the new product to the products array
-        this.offers.push(newProduct);
-      }
+    // Method to fetch Offers from the database.
+    async fetchOfferss() {
+      const res = await fetch("http://localhost:9523/api/offers");
+      return await res.json();
     },
   },
   async created() {
-    // this.books = await this.fetchbooks();
-    this.books = [];
     this.products = await this.fetchProducts();
-    this.generateOffers();
+    this.offers = await this.fetchOfferss();
   },
-
-  // data() => this.data books
-  // method => this.method => fetchbook
-  // life cycle hooks created() => call our method here
 };
 </script>
 
