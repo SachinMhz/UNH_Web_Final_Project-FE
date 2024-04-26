@@ -11,7 +11,9 @@
         <span class="material-icons"> location_on </span>
         <span class="nav-label"> Deliver to John </span>
       </div>
-      <div class="nav-item search-bar"><SearchBar /></div>
+      <div class="nav-item search-bar">
+        <SearchBar :searchProducts="searchProducts" />
+      </div>
       <div class="nav-item">
         <span class="material-icons"> account_circle </span>
         <span class="nav-label"> Accounts </span>
@@ -62,6 +64,7 @@ export default {
     authorName: String,
     bookName: String,
     yourName: String,
+    searchProducts: Function,
   },
   methods: {
     toggleMenu() {
@@ -158,8 +161,8 @@ nav {
   }
 
   .maximized-nav.display-flex {
-  display: flex;
-}
+    display: flex;
+  }
 }
 
 @media only screen and (max-width: 700px) {

@@ -3,19 +3,30 @@
     bookName="Game of Thrones"
     authorName="George RR Martins"
     yourName="Write your Name"
+    :searchProducts="searchProducts"
   />
   <main>
-    <div class="offer-grid">
+    <div class="offer-grid" v-if="!isOffersHidden">
       <div class="offer" v-for="(offer, index) in offers" :key="index">
         <OfferCard :offer="offer" />
       </div>
     </div>
     <h2 class="product-title">Products Listing</h2>
     <div class="product-grid">
-      <div class="product" v-for="(product, index) in products" :key="index">
+      <div
+        class="product"
+        v-for="(product, index) in filteredProducts"
+        :key="index"
+      >
         <ProductCard :product="product" />
       </div>
     </div>
+    <img
+      v-if="filteredProducts.length == 0"
+      class="no-product-image"
+      src="./assets/No_Product_Found.png"
+      alt="No Product Found image"
+    />
   </main>
   <Footer />
 </template>
@@ -25,6 +36,8 @@ import Header from "./components/Header.vue";
 import ProductCard from "./components/ProductCard.vue";
 import OfferCard from "./components/OfferCard.vue";
 import Footer from "./components/Footer.vue";
+
+const BASE_URL = "https://sachin-unh-web-be.onrender.com/api";
 
 export default {
   name: "App",
@@ -38,22 +51,32 @@ export default {
     return {
       products: [],
       offers: [],
+      filteredProducts: [],
+      isOffersHidden: false,
     };
   },
   methods: {
     // Method to fetch products from the database.
     async fetchProducts() {
-      const res = await fetch("https://sachin-unh-web-be.onrender.com/api/products");
+      const res = await fetch(`${BASE_URL}/products`);
       return await res.json();
     },
     // Method to fetch Offers from the database.
     async fetchOffers() {
-      const res = await fetch("https://sachin-unh-web-be.onrender.com/api/offers");
+      const res = await fetch(`${BASE_URL}/offers`);
       return await res.json();
+    },
+    searchProducts(searchText) {
+      this.filteredProducts = this.products.filter((product) =>
+        product.name.toLowerCase().includes(searchText.toLowerCase())
+      );
+
+      this.isOffersHidden = !!searchText; // Converting String to boolean with double bang (!!)
     },
   },
   async created() {
     this.products = await this.fetchProducts();
+    this.filteredProducts = this.products;
     this.offers = await this.fetchOffers();
   },
 };
@@ -104,6 +127,11 @@ main {
   font-size: 28px;
   font-weight: bolder;
   margin: 16px 0px 8px 0px;
+}
+
+.no-product-image {
+  height: 300px;
+  aspect-ratio: 1;
 }
 
 @media only screen and (max-width: 1600px) {

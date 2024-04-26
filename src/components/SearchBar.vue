@@ -5,9 +5,9 @@
       type="text"
       v-model="searchText"
       placeholder="Search..."
-      @keyup.enter="search"
+      @keyup.enter="handleSearch"
     />
-    <div class="search-icon">
+    <div class="search-icon" @click="handleSearch">
       <span class="material-icons"> search </span>
     </div>
   </div>
@@ -21,9 +21,12 @@ export default {
       searchText: "",
     };
   },
+  props: {
+    searchProducts: Function,
+  },
   methods: {
-    search() {
-      console.log("Searching for:", this.searchText);
+    handleSearch() {
+      this.searchProducts(this.searchText);
     },
   },
 };
@@ -45,6 +48,10 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #9fa8edd6;
+}
+.search-icon:hover{
+  cursor: pointer;
   background-color: #9fa8ed;
 }
 
