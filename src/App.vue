@@ -6,6 +6,9 @@
     :searchProducts="searchProducts"
   />
   <main>
+    <div v-if="isLoading" class="spinner-wrapper">
+      <img src="./assets/loader.gif" alt="No Product Found image" />
+    </div>
     <div class="offer-grid" v-if="!isOffersHidden">
       <div class="offer" v-for="(offer, index) in offers" :key="index">
         <OfferCard :offer="offer" />
@@ -49,6 +52,7 @@ export default {
   },
   data() {
     return {
+      isLoading: false,
       products: [],
       offers: [],
       filteredProducts: [],
@@ -75,9 +79,11 @@ export default {
     },
   },
   async created() {
+    this.isLoading = true;
     this.products = await this.fetchProducts();
     this.filteredProducts = this.products;
     this.offers = await this.fetchOffers();
+    this.isLoading = false;
   },
 };
 </script>
@@ -132,6 +138,13 @@ main {
 .no-product-image {
   height: 300px;
   aspect-ratio: 1;
+}
+
+.spinner-wrapper {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  z-index: 1;
 }
 
 @media only screen and (max-width: 1600px) {
