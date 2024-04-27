@@ -6,30 +6,36 @@
     :searchProducts="searchProducts"
   />
   <main>
-    <div v-if="isLoading" class="spinner-wrapper">
-      <img src="./assets/loader.gif" alt="No Product Found image" />
-    </div>
-    <div class="offer-grid" v-if="!isOffersHidden">
-      <div class="offer" v-for="(offer, index) in offers" :key="index">
-        <OfferCard :offer="offer" />
-      </div>
-    </div>
-    <h2 class="product-title">Products Listing</h2>
-    <div class="product-grid">
-      <div
-        class="product"
-        v-for="(product, index) in filteredProducts"
-        :key="index"
-      >
-        <ProductCard :product="product" />
-      </div>
-    </div>
     <img
-      v-if="filteredProducts.length == 0"
-      class="no-product-image"
-      src="./assets/No_Product_Found.png"
-      alt="No Product Found image"
+      class="spinner"
+      v-if="isLoading"
+      src="./assets/loader.gif"
+      alt="Spinner Image"
     />
+    <div v-else>
+      <div class="offer-grid" v-if="!isOffersHidden">
+        <div class="offer" v-for="(offer, index) in offers" :key="index">
+          <OfferCard :offer="offer" />
+        </div>
+      </div>
+      <h2 class="product-title">Products Listing</h2>
+
+      <div class="product-grid">
+        <div
+          class="product"
+          v-for="(product, index) in filteredProducts"
+          :key="index"
+        >
+          <ProductCard :product="product" />
+        </div>
+      </div>
+      <img
+        v-if="filteredProducts.length == 0"
+        class="no-product-image"
+        src="./assets/No_Product_Found.png"
+        alt="No Product Found image"
+      />
+    </div>
   </main>
   <Footer />
 </template>
@@ -82,6 +88,7 @@ export default {
     this.isLoading = true;
     this.products = await this.fetchProducts();
     this.filteredProducts = this.products;
+
     this.offers = await this.fetchOffers();
     this.isLoading = false;
   },
@@ -104,6 +111,7 @@ body {
 
 main {
   padding: 90px 140px;
+  min-height: 80vh;
 }
 
 .product-grid {
@@ -140,11 +148,11 @@ main {
   aspect-ratio: 1;
 }
 
-.spinner-wrapper {
-  position: absolute;
-  text-align: center;
-  width: 100%;
-  z-index: 1;
+.spinner {
+  display: block;
+  width: 150px;
+  aspect-ratio: 1;
+  margin: 200px auto;
 }
 
 @media only screen and (max-width: 1600px) {
